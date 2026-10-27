@@ -1,0 +1,166 @@
+Diseña una aplicación móvil (iOS/Android, frame de 390x844) llamada "Casa Común", en español de Chile, con montos en pesos chilenos (formato $12.990, sin decimales).
+
+## CONCEPTO
+Casa Común administra la economía de un hogar compartido: gastos comunes, división de boletas por producto, cuentas fijas, fondo común, despensa con vencimientos y lista de compras. Funciona en dos modos:
+- MODO INDIVIDUAL: una persona sola registra sus gastos, escanea boletas y controla su despensa. Todo es útil sin necesidad de invitar a nadie.
+- MODO HOGAR: varias personas que viven juntas (2 a 6 miembros) comparten gastos, deudas, fondo común, despensa y lista de compras en tiempo real.
+El usuario puede pasar del modo individual al modo hogar en cualquier momento creando un hogar o uniéndose a uno. Cuando está en un hogar, también conserva sus gastos personales separados de los comunes. Diseña cada pantalla relevante en sus dos variantes (individual y hogar).
+
+## ESTILO VISUAL
+- Moderno, limpio, cercano y confiable. Nada corporativo ni frío: debe sentirse como una app para la casa, no para un banco.
+- Color principal: verde azulado (#1F8A70 aprox.). Secundario cálido: naranjo suave (#F4A261) para acentos y acciones de despensa.
+- Colores de estado: verde (te deben / pagado), rojo suave (debes / vencido), amarillo (por vencer / pendiente).
+- Fondo claro (#F7F8FA), tarjetas blancas con bordes redondeados (16px) y sombras sutiles.
+- Tipografía sans serif redondeada (Inter o similar). Montos grandes y en negrita.
+- Íconos lineales consistentes. Avatares circulares con iniciales y color por miembro, para identificar rápido quién pagó qué.
+- Botones grandes y fáciles de tocar. Diseña también la versión en modo oscuro de la pantalla de Inicio.
+
+## NAVEGACIÓN
+Barra inferior con 5 elementos:
+1. Inicio
+2. Movimientos
+3. Botón central destacado "+" (flotante, más grande)
+4. Despensa
+5. Hogar (en modo individual se llama "Perfil" e invita a crear o unirse a un hogar)
+El botón "+" abre una hoja inferior con: Escanear boleta, Agregar gasto manual, Agregar a despensa, Agregar a lista de compras, Registrar pago/aporte.
+En la parte superior de Inicio, un selector para alternar la vista entre "Hogar" y "Mis gastos personales".
+
+## PANTALLAS
+
+### 1. Onboarding (3 pantallas deslizables)
+- "Divide gastos sin discusiones": ilustración de boleta dividida entre personas.
+- "Escanea tu boleta y listo": ilustración de cámara leyendo una boleta.
+- "Tu despensa te avisa antes de que algo venza".
+- Indicador de páginas, botón "Siguiente" y opción "Omitir".
+
+### 2. Registro e inicio de sesión
+- Registro con nombre, correo y contraseña, o botón de Google.
+- Inicio de sesión con opción "¿Olvidaste tu contraseña?".
+
+### 3. Elegir cómo empezar
+Tres tarjetas grandes:
+- "Crear un hogar": para quienes viven con otras personas.
+- "Unirme a un hogar": ingresar código o escanear QR.
+- "Usar solo por ahora": modo individual, con texto aclarando que puede crear o unirse a un hogar después.
+
+### 4. Crear hogar
+- Nombre del hogar, foto o emoji del hogar.
+- Pantalla siguiente para invitar: código de 6 caracteres, código QR, botón "Compartir por WhatsApp" y "Copiar link".
+- Lista de miembros unidos que se va llenando, y botón "Continuar" aunque aún no se haya unido nadie.
+
+### 5. Inicio (dashboard)
+VARIANTE HOGAR:
+- Saludo con nombre y nombre del hogar.
+- Tarjeta principal de balance: "Te deben $18.500" o "Debes $7.200", con botón "Ver saldos" y botón "Saldar".
+- Tarjeta "Cuentas del mes": próximas cuentas fijas con fecha y estado (pagada / pendiente / vencida).
+- Tarjeta "Fondo común": saldo actual y barra de aportes del mes por miembro.
+- Tarjeta "Por vencer en la despensa": 3 productos con días restantes y color de estado.
+- Actividad reciente: "Camila agregó Supermercado $32.450", con avatar.
+VARIANTE INDIVIDUAL:
+- Gasto del mes vs presupuesto con barra de progreso.
+- Gastos por categoría (gráfico de dona pequeño).
+- Tarjeta "Por vencer en la despensa".
+- Últimos gastos.
+- Tarjeta sutil invitando: "¿Vives con más personas? Crea un hogar y dividan los gastos".
+
+### 6. Escanear boleta (flujo de 3 pantallas, es la función estrella)
+a) Cámara: marco guía para encuadrar la boleta, botón de captura, opción de subir desde galería y flash.
+b) Procesando: animación de lectura con texto "Leyendo tu boleta...".
+c) Revisión de productos: 
+- Encabezado con nombre del local, fecha y total detectado (editables).
+- Lista de productos detectados con nombre, cantidad y precio, cada uno editable.
+- En cada producto, un selector de asignación: "Común" (todos), "Mío", o avatares de miembros específicos para asignarlo a una o varias personas.
+- Botón de acción rápida "Marcar todo como común".
+- En cada producto, un interruptor "Agregar a despensa" con campo opcional de fecha de vencimiento.
+- Selector "¿Quién pagó?" con avatares.
+- Resumen inferior fijo: cuánto le corresponde a cada miembro.
+- Botón "Guardar gasto".
+En modo individual, no aparece la asignación a personas: solo categorías y el interruptor de despensa.
+
+### 7. Agregar gasto manual
+- Monto grande en la parte superior con teclado numérico.
+- Descripción, categoría (íconos: supermercado, aseo, servicios, arriendo, comida, transporte, otros), fecha.
+- Tipo: "Común" o "Personal".
+- Si es común: ¿quién pagó? y cómo dividir, con pestañas: "Partes iguales", "Porcentajes", "Montos exactos", "Por partes" (ej: 2 partes para uno, 1 para otro). Mostrar el resultado por persona en tiempo real.
+- Adjuntar foto de boleta (opcional).
+
+### 8. Movimientos
+- Pestañas: "Todos", "Comunes", "Personales".
+- Buscador y filtros por categoría, miembro, fecha.
+- Lista agrupada por día con ícono de categoría, descripción, quién pagó (avatar), monto total y "tu parte" debajo.
+- Detalle de gasto: desglose completo, productos si vino de boleta, foto de la boleta, división por persona, botones editar y eliminar, y registro de quién lo creó o modificó.
+
+### 9. Saldos y pagos (solo modo hogar)
+- Vista simplificada de deudas: tarjetas del tipo "Tú le debes $7.200 a Matías" y "Camila te debe $4.100", con el mínimo de transferencias necesarias.
+- Botón "Saldar" en cada deuda que abre:
+  - Datos de transferencia del receptor (nombre, banco, tipo de cuenta, número, RUT, correo) con botón "Copiar todo".
+  - Botón "Ya transferí".
+  - Estado "Esperando confirmación de Matías" hasta que el receptor confirme.
+- Botón "Enviar recordatorio" en deudas que te deben, con mensaje amable prediseñado.
+- Historial de pagos realizados.
+
+### 10. Cuentas fijas
+- Lista de cuentas recurrentes (arriendo, luz, agua, gas, internet, streaming) con ícono, monto, día de pago y estado del mes.
+- Crear cuenta fija: nombre, monto (fijo o variable, si es variable se ingresa cada mes), día de vencimiento, quién la paga, regla de división (iguales, porcentajes, montos fijos) y recordatorio (días antes).
+- Detalle: historial de montos de los últimos meses en gráfico de barras, con alerta si el monto subió más de lo normal.
+En modo individual funcionan igual pero sin división.
+
+### 11. Fondo común (solo modo hogar)
+- Saldo actual grande.
+- Aporte mensual acordado por miembro y estado de cada uno (aportó / pendiente).
+- Botones "Aportar" y "Registrar gasto del fondo".
+- Lista de movimientos del fondo (entradas y salidas).
+
+### 12. Despensa
+- Pestañas por ubicación: "Refrigerador", "Congelador", "Alacena", "Aseo".
+- Sección destacada superior "Vence pronto" con productos en rojo (vencido) y amarillo (vence en 3 días o menos).
+- Cada producto: nombre, cantidad, fecha de vencimiento, días restantes, quién lo compró (en modo hogar) y si es común o personal.
+- Acciones deslizando: "Se acabó" (lo quita y ofrece agregarlo a la lista de compras), "Editar".
+- Botón para agregar producto manualmente o escanear código de barras.
+- Sección "¿Qué cocino?": sugerencias de recetas usando productos que están por vencer, con tarjetas de receta (foto, nombre, tiempo, ingredientes que tienes vs los que faltan).
+
+### 13. Lista de compras (compartida en modo hogar)
+- Lista con casillas, agrupada por categoría.
+- Cada ítem muestra quién lo agregó (avatar).
+- Agregar rápido con campo de texto en la parte superior.
+- Al marcar ítems como comprados, botón "Terminar compra" que ofrece escanear la boleta para registrar el gasto.
+- Indicador en tiempo real: "Matías está comprando ahora".
+
+### 14. Estadísticas
+- Selector de mes.
+- Gasto total del hogar y tu parte.
+- Gráfico por categoría y comparación con el mes anterior.
+- En modo hogar: cuánto aportó cada miembro.
+- Presupuesto por categoría con barras de progreso.
+
+### 15. Hogar (configuración del hogar)
+- Nombre y foto del hogar.
+- Miembros con avatar, rol (administrador / miembro) y fecha de ingreso.
+- Botón "Invitar" (código, QR, link).
+- Reglas del hogar: división por defecto, aporte mensual al fondo común, recordatorios automáticos.
+- Opción "Salir del hogar" (en rojo, al final).
+
+### 16. Cierre de convivencia (al salir del hogar)
+- Resumen del saldo final de quien se va: lo que debe y lo que le deben.
+- Sección "Garantía del arriendo": cuánto aportó y cómo se devolverá.
+- Sección "Cosas compradas en conjunto" (ej: refrigerador, microondas) con opción de definir quién se lo queda y cuánto se compensa.
+- Saldo final a liquidar y botón "Confirmar salida", con confirmación de los otros miembros.
+
+### 17. Notificaciones
+- Lista con íconos por tipo: nuevo gasto, pago recibido, recordatorio de cobro, cuenta por vencer, producto por vencer, nuevo miembro.
+- Cada notificación con acción directa (ej: "Confirmar pago").
+
+### 18. Perfil y ajustes
+- Foto, nombre, correo.
+- Mis datos de transferencia (para que otros me paguen).
+- Preferencias de notificaciones.
+- Modo oscuro.
+- Presupuesto personal mensual.
+- Cerrar sesión.
+
+## ESTADOS A INCLUIR
+- Estados vacíos con ilustración y llamado a la acción: sin gastos, despensa vacía, lista de compras vacía, hogar sin otros miembros ("Invita a tus compañeros para empezar a dividir").
+- Estado de error de lectura de boleta: "No pudimos leer bien la boleta" con opciones "Reintentar" o "Ingresar manual".
+
+## DATOS DE EJEMPLO
+Usa un hogar llamado "Casa" con 3 miembros: Sofía (usuario actual), Gustavo y Pepito. Usa comercios chilenos genéricos como "Supermercado", "Feria" o "Farmacia", y productos comunes: pan, leche, huevos, detergente, palta, arroz, papel higiénico.
